@@ -8,7 +8,7 @@
             <body>
             <h1>Calculate Maximum Profit</h1><br>
              <!-- Basic HTML Form -->
-            <form method="post" action="index.php">
+            <form method="post" action="Task2.php">
                 Enter the quantity of bread <input type="Number" name="bread_quantity"><br><br>
                 Enter the quantity of samosa <input type="Number" name="samosa_quantity"><br><br>
                 Enter the quantity of vada <input type="Number" name="vada_quantity"><br><br>
@@ -28,12 +28,13 @@
             $samosapav_price = $_POST['samosapav_price'];
 
              // Conditional Statment/Actual logic
+            if($bread_quantity>$samosa_quantity OR $bread_quantity>$vada_quantity )
                 if($vadapav_price>=$samosapav_price){
                     $remainbread = $bread_quantity - ($vada_quantity*2);
                     $vada_profit= $vada_quantity * $vadapav_price;
                     $samosapav_profit= $samosapav_price* intval($remainbread/2);
                     $max_profit=$vada_profit+$samosapav_profit;
-                    echo $max_profit;
+                    echo "The maximum profit you can earn is " .$max_profit. " Rs.";
                     }
                 else {
                     $remainbread = $bread_quantity - ($samosa_quantity*2);
@@ -42,6 +43,17 @@
                     $max1_profit=$vada_profit+$samosapav_profit;
                     echo "The maximum profit you can earn is " . $max1_profit. " Rs.";
                     }
+            else{
+                if($vadapav_price>=$samosapav_price){
+                    $max_profit= intval($bread_quantity/2) * $vadapav_price;
+                    echo "The maximum profit you can earn is " .$max_profit. " Rs.";
                 }
+                else{
+                    $max_profit= intval($bread_quantity/2) * $samosapav_price;
+                    echo "The maximum profit you can earn is " .$max_profit. " Rs.";
+                }
+
+            }                
+        }
     ?>            
 

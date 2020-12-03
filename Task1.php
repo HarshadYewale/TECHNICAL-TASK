@@ -6,9 +6,9 @@
     <title>Document</title>
 </head>
 <body>   
-        <h1>Calculate the umber of servers on the basis of Load </h1>
+        <h1>Calculate the number of servers on the basis of Load </h1>
         <!-- Basic HTML Form -->
-    <form method="post" action="index.php">
+    <form method="post" action="Task1.php">
       Enter The number of servers  <input type="Number" name="Nservers"><br><br>
         Load in % at minute 1 <input type="Number" name="Load1"><br><br>
         Load in % at minute 2 <input type="Number" name="Load2"><br><br>
@@ -31,13 +31,19 @@
         $load= array($load1, $load2, $load3, $load4, $load5);
         
         // Conditional Statment/Actual logic
-        if($load[4]>50){
-            $Nservers = ($Nservers*2) + 1;
-            echo "The Number of servers are: " . $Nservers;
-        }
-        else{
-            $Nservers = ($Nservers/2);
-            echo "The Number of servers after 5min: " . $Nservers;
+
+        foreach ($load as $key => $value) {
+            if($value>50){
+                $Nservers = ($Nservers*2) + 1;
+                echo "The Number of servers are " . $Nservers ."<br><br>";
+                $Nservers=$_POST["Nservers"];
+            }
+            else{
+                $Nservers = ($Nservers/2);
+                echo "The Number of servers are " . $Nservers ."<br><br>";
+                $Nservers=$_POST["Nservers"];
+            }
+
         }
     }
     ?>
